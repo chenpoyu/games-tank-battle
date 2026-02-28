@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a2332;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="tankGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD54F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF8F00;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="textShadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Grid pattern (battlefield feel) -->
+  <g opacity="0.06">
+    <line x1="0" y1="0" x2="0" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="60" y1="0" x2="60" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="120" y1="0" x2="120" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="180" y1="0" x2="180" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="240" y1="0" x2="240" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="300" y1="0" x2="300" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="360" y1="0" x2="360" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="420" y1="0" x2="420" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="480" y1="0" x2="480" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="540" y1="0" x2="540" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="660" y1="0" x2="660" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="720" y1="0" x2="720" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="780" y1="0" x2="780" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="840" y1="0" x2="840" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="900" y1="0" x2="900" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="960" y1="0" x2="960" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="1020" y1="0" x2="1020" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="1080" y1="0" x2="1080" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="1140" y1="0" x2="1140" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="1200" y1="0" x2="1200" y2="630" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="60" x2="1200" y2="60" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="120" x2="1200" y2="120" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="180" x2="1200" y2="180" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="240" x2="1200" y2="240" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="360" x2="1200" y2="360" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="420" x2="1200" y2="420" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="480" x2="1200" y2="480" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="540" x2="1200" y2="540" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="600" x2="1200" y2="600" stroke="#4CAF50" stroke-width="1"/>
+  </g>
+
+  <!-- Decorative brick walls -->
+  <g opacity="0.3">
+    <!-- Top left bricks -->
+    <rect x="60" y="60" width="60" height="60" fill="#8D6E63" rx="2"/>
+    <rect x="120" y="60" width="60" height="60" fill="#795548" rx="2"/>
+    <rect x="60" y="120" width="60" height="60" fill="#795548" rx="2"/>
+    <!-- Top right bricks -->
+    <rect x="1020" y="60" width="60" height="60" fill="#8D6E63" rx="2"/>
+    <rect x="1080" y="60" width="60" height="60" fill="#795548" rx="2"/>
+    <rect x="1080" y="120" width="60" height="60" fill="#795548" rx="2"/>
+    <!-- Bottom left bricks -->
+    <rect x="60" y="480" width="60" height="60" fill="#795548" rx="2"/>
+    <rect x="60" y="540" width="60" height="60" fill="#8D6E63" rx="2"/>
+    <rect x="120" y="540" width="60" height="60" fill="#795548" rx="2"/>
+    <!-- Bottom right bricks -->
+    <rect x="1080" y="480" width="60" height="60" fill="#795548" rx="2"/>
+    <rect x="1020" y="540" width="60" height="60" fill="#795548" rx="2"/>
+    <rect x="1080" y="540" width="60" height="60" fill="#8D6E63" rx="2"/>
+    <!-- Steel walls (gray) -->
+    <rect x="180" y="60" width="60" height="60" fill="#9E9E9E" rx="2" opacity="0.5"/>
+    <rect x="960" y="60" width="60" height="60" fill="#9E9E9E" rx="2" opacity="0.5"/>
+    <rect x="180" y="540" width="60" height="60" fill="#9E9E9E" rx="2" opacity="0.5"/>
+    <rect x="960" y="540" width="60" height="60" fill="#9E9E9E" rx="2" opacity="0.5"/>
+  </g>
+
+  <!-- Explosion effects (background decoration) -->
+  <g opacity="0.15" filter="url(#glow)">
+    <circle cx="200" cy="300" r="40" fill="#FF5722"/>
+    <circle cx="200" cy="300" r="25" fill="#FF9800"/>
+    <circle cx="200" cy="300" r="12" fill="#FFEB3B"/>
+    <circle cx="1000" cy="350" r="35" fill="#FF5722"/>
+    <circle cx="1000" cy="350" r="20" fill="#FF9800"/>
+    <circle cx="1000" cy="350" r="10" fill="#FFEB3B"/>
+  </g>
+
+  <!-- Center Tank (large, hero image) -->
+  <g transform="translate(600, 340)" filter="url(#glow)">
+    <!-- Tank shadow -->
+    <ellipse cx="0" cy="55" rx="70" ry="15" fill="#000" opacity="0.3"/>
+    <!-- Left tread -->
+    <rect x="-65" y="-40" width="18" height="90" rx="6" fill="#616161"/>
+    <circle cx="-56" cy="-30" r="5" fill="#424242"/>
+    <circle cx="-56" cy="-15" r="5" fill="#424242"/>
+    <circle cx="-56" cy="0" r="5" fill="#424242"/>
+    <circle cx="-56" cy="15" r="5" fill="#424242"/>
+    <circle cx="-56" cy="30" r="5" fill="#424242"/>
+    <circle cx="-56" cy="45" r="5" fill="#424242"/>
+    <!-- Right tread -->
+    <rect x="47" y="-40" width="18" height="90" rx="6" fill="#616161"/>
+    <circle cx="56" cy="-30" r="5" fill="#424242"/>
+    <circle cx="56" cy="-15" r="5" fill="#424242"/>
+    <circle cx="56" cy="0" r="5" fill="#424242"/>
+    <circle cx="56" cy="15" r="5" fill="#424242"/>
+    <circle cx="56" cy="30" r="5" fill="#424242"/>
+    <circle cx="56" cy="45" r="5" fill="#424242"/>
+    <!-- Tank body -->
+    <rect x="-48" y="-30" width="96" height="70" rx="6" fill="url(#tankGrad)"/>
+    <!-- Body detail lines -->
+    <line x1="-40" y1="-10" x2="40" y2="-10" stroke="#1B5E20" stroke-width="2" opacity="0.4"/>
+    <line x1="-40" y1="10" x2="40" y2="10" stroke="#1B5E20" stroke-width="2" opacity="0.4"/>
+    <line x1="-40" y1="30" x2="40" y2="30" stroke="#1B5E20" stroke-width="2" opacity="0.4"/>
+    <!-- Turret -->
+    <circle cx="0" cy="5" r="28" fill="url(#tankGrad)"/>
+    <circle cx="0" cy="5" r="22" fill="#388E3C"/>
+    <circle cx="0" cy="5" r="10" fill="#1B5E20"/>
+    <!-- Barrel -->
+    <rect x="15" y="-2" width="60" height="14" rx="3" fill="#4CAF50"/>
+    <rect x="70" y="-5" width="12" height="20" rx="3" fill="#FF5722"/>
+    <!-- Barrel fire effect -->
+    <circle cx="88" cy="5" r="8" fill="#FF5722" opacity="0.6"/>
+    <circle cx="92" cy="5" r="5" fill="#FFEB3B" opacity="0.5"/>
+    <!-- Highlight -->
+    <path d="M -15 -8 Q -5 -18 15 -8" stroke="#81C784" stroke-width="3" fill="none" opacity="0.5"/>
+  </g>
+
+  <!-- Bullet trails -->
+  <g opacity="0.4">
+    <rect x="700" y="338" width="30" height="6" rx="3" fill="#FFEB3B"/>
+    <rect x="740" y="338" width="15" height="6" rx="3" fill="#FF5722"/>
+    <circle cx="760" cy="341" r="5" fill="#FF5722" opacity="0.6"/>
+  </g>
+
+  <!-- Enemy tank (smaller, top right) -->
+  <g transform="translate(900, 200) scale(0.5)" opacity="0.6">
+    <rect x="-48" y="-30" width="96" height="70" rx="6" fill="#E53935"/>
+    <rect x="-65" y="-40" width="18" height="90" rx="6" fill="#616161"/>
+    <rect x="47" y="-40" width="18" height="90" rx="6" fill="#616161"/>
+    <circle cx="0" cy="5" r="28" fill="#E53935"/>
+    <circle cx="0" cy="5" r="22" fill="#C62828"/>
+    <circle cx="0" cy="5" r="10" fill="#B71C1C"/>
+    <rect x="-75" y="-2" width="60" height="14" rx="3" fill="#E53935"/>
+    <rect x="-87" y="-5" width="12" height="20" rx="3" fill="#FF5722"/>
+  </g>
+
+  <!-- Enemy tank (smaller, bottom left) -->
+  <g transform="translate(300, 430) scale(0.4) rotate(45)" opacity="0.4">
+    <rect x="-48" y="-30" width="96" height="70" rx="6" fill="#E53935"/>
+    <rect x="-65" y="-40" width="18" height="90" rx="6" fill="#616161"/>
+    <rect x="47" y="-40" width="18" height="90" rx="6" fill="#616161"/>
+    <circle cx="0" cy="5" r="28" fill="#E53935"/>
+    <circle cx="0" cy="5" r="22" fill="#C62828"/>
+    <rect x="15" y="-2" width="60" height="14" rx="3" fill="#E53935"/>
+  </g>
+
+  <!-- Title text -->
+  <text x="600" y="145" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="80" font-weight="900" fill="url(#titleGrad)" filter="url(#textShadow)" letter-spacing="6">
+    坦克大戰
+  </text>
+  <text x="600" y="200" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-size="36" font-weight="700" fill="#ECEFF1" filter="url(#textShadow)" letter-spacing="10">
+    TANK BATTLE
+  </text>
+
+  <!-- Subtitle -->
+  <text x="600" y="550" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#90A4AE" letter-spacing="2">
+    React + Canvas · 支援電腦 &amp; 手機 · 經典街機重現
+  </text>
+
+  <!-- Author badge -->
+  <g transform="translate(600, 590)">
+    <text x="0" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#546E7A" letter-spacing="1">
+      by Poyu Chen
+    </text>
+  </g>
+
+  <!-- Border glow -->
+  <rect x="2" y="2" width="1196" height="626" rx="8" fill="none" stroke="#4CAF50" stroke-width="2" opacity="0.2"/>
+</svg>

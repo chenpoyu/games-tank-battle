@@ -1,0 +1,24 @@
+{
+  "name": "坦克大戰 Tank Battle",
+  "short_name": "坦克大戰",
+  "description": "經典坦克大戰網頁遊戲 — 使用 React + HTML5 Canvas 打造，支援電腦鍵盤與手機觸控操作",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#4CAF50",
+  "orientation": "any",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a2332;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d1117;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="tankGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="180" height="180" rx="36" fill="url(#bgGrad)"/>
+
+  <!-- Grid lines -->
+  <g opacity="0.06">
+    <line x1="30" y1="0" x2="30" y2="180" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="60" y1="0" x2="60" y2="180" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="90" y1="0" x2="90" y2="180" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="120" y1="0" x2="120" y2="180" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="150" y1="0" x2="150" y2="180" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="30" x2="180" y2="30" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="60" x2="180" y2="60" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="90" x2="180" y2="90" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="120" x2="180" y2="120" stroke="#4CAF50" stroke-width="1"/>
+    <line x1="0" y1="150" x2="180" y2="150" stroke="#4CAF50" stroke-width="1"/>
+  </g>
+
+  <!-- Tank -->
+  <g transform="translate(90, 90)">
+    <!-- Left tread -->
+    <rect x="-45" y="-30" width="12" height="65" rx="4" fill="#616161"/>
+    <circle cx="-39" cy="-22" r="3.5" fill="#424242"/>
+    <circle cx="-39" cy="-10" r="3.5" fill="#424242"/>
+    <circle cx="-39" cy="2" r="3.5" fill="#424242"/>
+    <circle cx="-39" cy="14" r="3.5" fill="#424242"/>
+    <circle cx="-39" cy="26" r="3.5" fill="#424242"/>
+    <!-- Right tread -->
+    <rect x="33" y="-30" width="12" height="65" rx="4" fill="#616161"/>
+    <circle cx="39" cy="-22" r="3.5" fill="#424242"/>
+    <circle cx="39" cy="-10" r="3.5" fill="#424242"/>
+    <circle cx="39" cy="2" r="3.5" fill="#424242"/>
+    <circle cx="39" cy="14" r="3.5" fill="#424242"/>
+    <circle cx="39" cy="26" r="3.5" fill="#424242"/>
+    <!-- Tank body -->
+    <rect x="-34" y="-22" width="68" height="50" rx="4" fill="url(#tankGrad)"/>
+    <!-- Turret -->
+    <circle cx="0" cy="3" r="20" fill="url(#tankGrad)"/>
+    <circle cx="0" cy="3" r="15" fill="#388E3C"/>
+    <circle cx="0" cy="3" r="7" fill="#1B5E20"/>
+    <!-- Barrel -->
+    <rect x="12" y="-1" width="42" height="10" rx="2" fill="#4CAF50"/>
+    <rect x="50" y="-3" width="8" height="14" rx="2" fill="#FF5722"/>
+    <!-- Barrel flash -->
+    <circle cx="62" cy="4" r="6" fill="#FF5722" opacity="0.5"/>
+    <circle cx="65" cy="4" r="3.5" fill="#FFEB3B" opacity="0.4"/>
+    <!-- Highlight -->
+    <path d="M -10 -6 Q -3 -14 10 -6" stroke="#81C784" stroke-width="2" fill="none" opacity="0.5"/>
+  </g>
+
+  <!-- Border -->
+  <rect x="2" y="2" width="176" height="176" rx="35" fill="none" stroke="#4CAF50" stroke-width="2" opacity="0.3"/>
+</svg>

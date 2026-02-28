@@ -6,17 +6,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="坦克大戰" />
+    <meta name="theme-color" content="#4CAF50" />
     
-    <!-- Favicon -->
+    <!-- Favicon & Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="經典坦克大戰遊戲 - 支援 RWD 響應式佈局與觸控操作，適合手機、平板、桌機遊玩" />
-    <meta name="keywords" content="坦克大戰,Tank Battle,HTML5遊戲,Canvas遊戲,React遊戲" />
+    <meta name="description" content="🎮 經典坦克大戰網頁遊戲 — 使用 React + HTML5 Canvas 打造，支援 RWD 響應式佈局，電腦鍵盤與手機觸控皆可遊玩。關卡制、AI 敵軍、可破壞地圖、8-bit 音效，重現經典街機體驗！" />
+    <meta name="keywords" content="坦克大戰,Tank Battle,HTML5遊戲,Canvas遊戲,React遊戲,網頁遊戲,線上遊戲,手機遊戲,街機遊戲,復古遊戲,Battle City,經典遊戲,免費遊戲" />
     <meta name="author" content="Poyu Chen" />
     <meta name="copyright" content="© 2026 Poyu Chen. All rights reserved." />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <link rel="canonical" href="https://chenpoyu.github.io/games-tank-battle/" />
+
+    <!-- Open Graph / Facebook / LINE / Discord -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://chenpoyu.github.io/games-tank-battle/" />
+    <meta property="og:title" content="🎮 坦克大戰 Tank Battle — 經典街機網頁重現" />
+    <meta property="og:description" content="使用 React + HTML5 Canvas 打造的經典坦克大戰遊戲，支援電腦鍵盤與手機觸控操作。關卡制、AI 敵軍、可破壞地圖、8-bit 復古音效，免費線上遊玩！" />
+    <meta property="og:image" content="https://chenpoyu.github.io/games-tank-battle/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="坦克大戰 Tank Battle 遊戲預覽圖 — 綠色坦克在戰場上的經典場景" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:site_name" content="坦克大戰 Tank Battle" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="🎮 坦克大戰 Tank Battle — 經典街機網頁重現" />
+    <meta name="twitter:description" content="React + Canvas 打造的經典坦克大戰，支援電腦與手機，免費線上遊玩！" />
+    <meta name="twitter:image" content="https://chenpoyu.github.io/games-tank-battle/og-image.png" />
+    <meta name="twitter:image:alt" content="坦克大戰 Tank Battle 遊戲預覽圖" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "坦克大戰 Tank Battle",
+      "alternateName": "Tank Battle",
+      "description": "經典坦克大戰網頁遊戲 — 使用 React + HTML5 Canvas 打造，支援 RWD 響應式佈局，電腦鍵盤與手機觸控皆可遊玩。",
+      "url": "https://chenpoyu.github.io/games-tank-battle/",
+      "image": "https://chenpoyu.github.io/games-tank-battle/og-image.png",
+      "author": {
+        "@type": "Person",
+        "name": "Poyu Chen",
+        "url": "https://github.com/chenpoyu"
+      },
+      "genre": ["Arcade", "Action", "Shooter"],
+      "gamePlatform": ["Web Browser", "Mobile Browser"],
+      "operatingSystem": "Any",
+      "applicationCategory": "Game",
+      "inLanguage": ["zh-TW", "en"],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "TWD",
+        "availability": "https://schema.org/InStock"
+      },
+      "playMode": "SinglePlayer",
+      "numberOfPlayers": {
+        "@type": "QuantitativeValue",
+        "value": 1
+      },
+      "datePublished": "2026-02-28",
+      "copyrightYear": 2026,
+      "copyrightHolder": {
+        "@type": "Person",
+        "name": "Poyu Chen"
+      }
+    }
+    </script>
     
-    <title>坦克大戰 Tank Battle | Poyu Chen</title>
+    <title>坦克大戰 Tank Battle | 經典街機網頁遊戲 — Poyu Chen</title>
   </head>
   <body>
     <div id="root"></div>

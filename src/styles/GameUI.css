@@ -1,0 +1,627 @@
+/**
+ * ============================================================
+ * GameUI.css — 遊戲響應式佈局樣式 (Mobile-First)
+ * ============================================================
+ *
+ * 手機直向佈局（由上到下）：
+ *   [HUD]       — 極薄單行 (~28px)，只顯示數值
+ *   [Canvas]    — 寬度 = 100vw，高度 = 100vw/1.78 (16:9)
+ *   [Controls]  — 填滿所有剩餘空間（大按鈕、適合老人家）
+ *   toolbar 按鈕合併到 controls 區域右上角
+ *
+ * 桌機 / 大螢幕佈局：
+ *   [HUD]       — 正常高度
+ *   [Canvas]    — 填滿可用空間
+ *   [Toolbar]   — 獨立列
+ *   [Controls]  — 固定高度
+ *
+ * 設計原則：
+ *   • 手機上「遊戲畫面儘可能大」，控制區按鈕「大到不會按錯」
+ *   • 減少非必要的 padding / gap，把空間還給遊戲
+ *   • 所有互動元素至少 44×44px（Apple HIG / WCAG 觸控目標建議）
+ */
+
+/* ============================================
+   1. 全域重置
+   ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #0a0a1a;
+  color: #ffffff;
+  font-family: 'Noto Sans TC', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  overscroll-behavior: none;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   2. 遊戲容器
+   ============================================ */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  overflow: hidden;
+}
+
+/* ============================================
+   3. HUD — 手機上極薄
+   ============================================ */
+.game-hud {
+  display: flex;
+  flex-wrap: nowrap;           /* 手機上不換行 */
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 3px 8px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 100%);
+  border-bottom: 1px solid rgba(0, 204, 68, 0.3);
+  z-index: 10;
+  flex-shrink: 0;
+  min-height: 28px;
+}
+
+.hud-item {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 1px 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.hud-label {
+  font-size: 9px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.hud-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #00ff66;
+  min-width: 18px;
+  text-align: center;
+}
+
+.hud-lives .hud-value {
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* ============================================
+   4. Canvas 畫布
+   ============================================ */
+.canvas-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.game-canvas {
+  display: block;
+  border: 1px solid rgba(0, 204, 68, 0.4);
+  border-radius: 2px;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+/* ============================================
+   5. 覆蓋按鈕層 (Overlay)
+   ============================================ */
+.overlay-buttons {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.game-btn {
+  pointer-events: auto;
+  padding: 14px 32px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: inherit;
+  color: #fff;
+  background: linear-gradient(135deg, #00cc44 0%, #009933 100%);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow:
+    0 4px 15px rgba(0, 204, 68, 0.4),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  touch-action: manipulation;
+}
+
+.game-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 25px rgba(0, 204, 68, 0.6);
+}
+
+.game-btn:active {
+  transform: scale(0.96);
+}
+
+.btn-restart {
+  background: linear-gradient(135deg, #dd3333 0%, #aa2222 100%);
+  box-shadow: 0 4px 15px rgba(221, 51, 51, 0.4);
+}
+
+.btn-next {
+  background: linear-gradient(135deg, #3399ff 0%, #2266cc 100%);
+  box-shadow: 0 4px 15px rgba(51, 153, 255, 0.4);
+}
+
+/* ============================================
+   6. 工具列 — 手機上隱藏（按鈕移到控制器區域）
+   ============================================ */
+.toolbar {
+  display: none;             /* 預設隱藏（手機優先） */
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px;
+  flex-shrink: 0;
+  z-index: 10;
+  min-height: 0;
+}
+
+.toolbar-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background 0.2s;
+}
+
+.toolbar-btn:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ============================================
+   7. 虛擬控制器 — 填滿所有剩餘空間
+   ============================================
+   手機上使用大按鈕，方便老人家操作。
+   D-Pad 左側、Fire 右側，中間可放 pause / fullscreen 小按鈕。
+*/
+.virtual-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 6px 16px;
+  flex: 1;                   /* 吃掉 Canvas 之後的所有剩餘空間 */
+  min-height: 80px;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  z-index: 30;
+}
+
+/* ---- D-Pad ---- */
+.dpad-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.dpad {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 3px;
+  /*
+   * 依視窗寬高動態縮放：
+   * 手機直向 → 控制區很大 → 按鈕也能大
+   * clamp(min, preferred, max)
+   */
+  width: clamp(120px, 30vw, 210px);
+  height: clamp(120px, 30vw, 210px);
+}
+
+.dpad-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 38px;
+  min-height: 38px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.1s, border-color 0.1s;
+}
+
+.dpad-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dpad-btn:active {
+  background: rgba(0, 204, 68, 0.4);
+  border-color: rgba(0, 204, 68, 0.7);
+  color: #00ff66;
+}
+
+.dpad-up    { grid-column: 2; grid-row: 1; }
+.dpad-left  { grid-column: 1; grid-row: 2; }
+.dpad-center{ grid-column: 2; grid-row: 2; background: rgba(255,255,255,0.03); border-radius: 50%; border: none; pointer-events: none; }
+.dpad-right { grid-column: 3; grid-row: 2; }
+.dpad-down  { grid-column: 2; grid-row: 3; }
+
+/* ---- 射擊按鈕 ---- */
+.fire-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.fire-btn {
+  width: clamp(80px, 22vw, 130px);
+  height: clamp(80px, 22vw, 130px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ff4444, #cc0000);
+  border: 3px solid rgba(255, 100, 100, 0.5);
+  cursor: pointer;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow:
+    0 4px 20px rgba(255, 0, 0, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  transition: transform 0.08s, box-shadow 0.08s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fire-btn:hover {
+  box-shadow:
+    0 4px 25px rgba(255, 0, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.fire-btn:active {
+  transform: scale(0.9);
+  box-shadow:
+    0 2px 10px rgba(255, 0, 0, 0.5),
+    inset 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.fire-btn-inner {
+  color: #fff;
+  font-size: clamp(14px, 3.5vw, 20px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+
+/* ---- 內嵌工具鈕（D-Pad 與 Fire 之間）---- */
+/* 手機上顯示暫停 / 全螢幕按鈕，桌機隱藏（用獨立 toolbar） */
+.inline-controls {
+  display: flex;
+  flex-direction: row;         /* 預設左右排列，避免橫向手機上下擠到 */
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.inline-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+
+.inline-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.inline-btn:active {
+  background: rgba(0, 204, 68, 0.3);
+}
+
+/* ============================================
+   8. RWD 響應式斷點
+   ============================================ */
+
+/* ─── 手機直向（≤ 480px 寬）─── */
+@media (max-width: 480px) and (orientation: portrait) {
+  .game-hud {
+    gap: 4px;
+    padding: 2px 6px;
+    min-height: 26px;
+  }
+  .hud-item { padding: 1px 5px; gap: 2px; }
+  .hud-label { font-size: 8px; }
+  .hud-value { font-size: 12px; min-width: 16px; }
+  .hud-lives .hud-value { font-size: 10px; }
+
+  .game-canvas { border-width: 1px; }
+  .game-btn { padding: 12px 28px; font-size: 17px; }
+
+  /* 控制器填滿空間，按鈕更大 */
+  .virtual-controls {
+    padding: 4px 10px;
+  }
+  .dpad {
+    width: clamp(130px, 35vw, 180px);
+    height: clamp(130px, 35vw, 180px);
+  }
+  .fire-btn {
+    width: clamp(85px, 24vw, 120px);
+    height: clamp(85px, 24vw, 120px);
+  }
+}
+
+/* ─── 手機直向（481px ~ 768px 寬，大手機 / 小平板）─── */
+@media (min-width: 481px) and (max-width: 768px) and (orientation: portrait) {
+  .game-hud {
+    gap: 8px;
+    padding: 4px 10px;
+    min-height: 32px;
+  }
+  .hud-label { font-size: 10px; }
+  .hud-value { font-size: 15px; }
+
+  .dpad {
+    width: clamp(140px, 28vw, 200px);
+    height: clamp(140px, 28vw, 200px);
+  }
+  .fire-btn {
+    width: clamp(90px, 20vw, 130px);
+    height: clamp(90px, 20vw, 130px);
+  }
+}
+
+/* ─── 手機 / 平板橫向（高度 ≤ 500px）─── */
+@media (orientation: landscape) and (max-height: 500px) {
+  .game-hud {
+    padding: 2px 8px;
+    min-height: 24px;
+    gap: 4px;
+    border-bottom-width: 1px;
+  }
+  .hud-item { padding: 1px 5px; }
+  .hud-label { font-size: 8px; }
+  .hud-value { font-size: 11px; }
+  .hud-lives .hud-value { font-size: 9px; }
+
+  .game-canvas { border-width: 1px; }
+
+  .virtual-controls {
+    padding: 2px 14px;
+    min-height: 60px;
+  }
+  .dpad {
+    width: clamp(90px, 18vh, 140px);
+    height: clamp(90px, 18vh, 140px);
+    gap: 2px;
+  }
+  .dpad-btn { min-width: 28px; min-height: 28px; }
+  .fire-btn {
+    width: clamp(60px, 14vh, 100px);
+    height: clamp(60px, 14vh, 100px);
+  }
+}
+
+/* ─── 平板橫向（501px ~ 768px 高度）─── */
+@media (orientation: landscape) and (min-height: 501px) and (max-height: 768px) {
+  .game-hud {
+    padding: 4px 12px;
+    min-height: 32px;
+  }
+  .hud-label { font-size: 10px; }
+  .hud-value { font-size: 14px; }
+
+  .toolbar {
+    display: flex;
+    min-height: 32px;
+    padding: 2px 10px;
+  }
+  .toolbar-btn { width: 34px; height: 34px; font-size: 17px; }
+
+  .inline-controls {
+    display: none;
+  }
+}
+
+/* ─── 桌機 / 大螢幕（> 768px 寬 且 > 600px 高）─── */
+@media (min-width: 769px) and (min-height: 601px) {
+  .game-hud {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 8px 20px;
+    min-height: 44px;
+    border-bottom-width: 2px;
+  }
+  .hud-item { padding: 3px 10px; gap: 5px; }
+  .hud-label { font-size: 11px; }
+  .hud-value { font-size: 18px; }
+  .hud-lives .hud-value { font-size: 14px; }
+
+  .game-canvas {
+    border-width: 2px;
+    border-radius: 4px;
+  }
+
+  /* 桌機上顯示獨立 toolbar，隱藏 inline 按鈕 */
+  .toolbar {
+    display: flex;
+    min-height: 36px;
+    padding: 4px 12px;
+  }
+
+  .inline-controls {
+    display: none;
+  }
+
+  .virtual-controls {
+    max-width: 650px;
+    padding: 8px 24px;
+  }
+
+  .dpad {
+    width: clamp(140px, 16vw, 190px);
+    height: clamp(140px, 16vw, 190px);
+  }
+
+  .fire-btn {
+    width: clamp(80px, 10vw, 120px);
+    height: clamp(80px, 10vw, 120px);
+  }
+}
+
+/* ============================================
+   9. 動畫
+   ============================================ */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.hud-lives .hud-value {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   10. 背景音樂控制按鈕
+   ============================================ */
+.music-toggle-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s ease;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.music-toggle-btn:hover {
+  background: rgba(0, 204, 68, 0.7);
+  border-color: rgba(0, 204, 68, 0.8);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 204, 68, 0.4);
+}
+
+.music-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+/* 手機上稍微調整位置避免遮擋 */
+@media (max-width: 768px) {
+  .music-toggle-btn {
+    top: 8px;
+    right: 8px;
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+  }
+}
+
+/* 橫向手機，避免與 HUD 重疊 */
+@media (orientation: landscape) and (max-height: 500px) {
+  .music-toggle-btn {
+    top: 6px;
+    right: 6px;
+    width: 38px;
+    height: 38px;
+    font-size: 20px;
+  }
+}
+
+/* ============================================
+   11. 版權標記
+   ============================================ */
+.copyright {
+  position: fixed;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 50;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 480px) {
+  .copyright {
+    font-size: 9px;
+    bottom: 2px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .copyright {
+    font-size: 8px;
+    bottom: 2px;
+  }
+}

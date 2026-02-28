@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="tankGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="32" fill="#1a1a1a"/>
+  
+  <!-- Tank body -->
+  <rect x="18" y="28" width="28" height="16" rx="2" fill="url(#tankGradient)"/>
+  
+  <!-- Tank turret -->
+  <circle cx="32" cy="36" r="8" fill="url(#tankGradient)"/>
+  
+  <!-- Tank barrel -->
+  <rect x="36" y="34" width="14" height="4" rx="1" fill="#4CAF50"/>
+  <rect x="48" y="33" width="4" height="6" rx="1" fill="#FF5722"/>
+  
+  <!-- Tank treads (left) -->
+  <rect x="16" y="26" width="4" height="20" rx="2" fill="#616161"/>
+  <circle cx="18" cy="28" r="1.5" fill="#424242"/>
+  <circle cx="18" cy="32" r="1.5" fill="#424242"/>
+  <circle cx="18" cy="36" r="1.5" fill="#424242"/>
+  <circle cx="18" cy="40" r="1.5" fill="#424242"/>
+  <circle cx="18" cy="44" r="1.5" fill="#424242"/>
+  
+  <!-- Tank treads (right) -->
+  <rect x="44" y="26" width="4" height="20" rx="2" fill="#616161"/>
+  <circle cx="46" cy="28" r="1.5" fill="#424242"/>
+  <circle cx="46" cy="32" r="1.5" fill="#424242"/>
+  <circle cx="46" cy="36" r="1.5" fill="#424242"/>
+  <circle cx="46" cy="40" r="1.5" fill="#424242"/>
+  <circle cx="46" cy="44" r="1.5" fill="#424242"/>
+  
+  <!-- Turret detail -->
+  <circle cx="32" cy="36" r="3" fill="#1B5E20"/>
+  
+  <!-- Highlight -->
+  <path d="M 28 32 Q 30 30 34 32" stroke="#81C784" stroke-width="1.5" fill="none" opacity="0.6"/>
+</svg>
